@@ -1,0 +1,16 @@
+{
+  "name": "mailserver",
+  "version": "1.0.0",
+  "description": "A Node.js application for sending emails when a product is available in stock",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "author": "Pedro Dominguez Aguilera",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.1.3",
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.1"
+  }
+}
