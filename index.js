@@ -3,12 +3,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 
+const template = require("./template");
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const route = express.Router();
-const port = 5000;
+const port = 5001;
 
 app.use("/v1", route);
 
@@ -27,22 +29,24 @@ const transporter = nodemailer.createTransport({
 });
 
 route.post("/sendMail", (req, res) => {
-  const { email, product } = req.body;
+  const { email, name, size, url } = req.body;
 
-  if (!email || !product) {
+  if (!email || !name || !size || !url) {
     return res
       .status(400)
       .json({ error: "Email and product are required fields." });
   }
 
+  console.log("Pedro ===> template", template);
+
   const mailData = {
     from: process.env.CHECK_STOCK_EMAIL,
     to: email,
-    subject: "Entrada en stock del producto: " + product,
-    html:
-      "<b>Hola! </b><br> El producto " +
-      product +
-      " que tienes en seguimiento ha entrado en stock.<br/>",
+    subject: "Entrada en stock del producto " + name + " . Talla: " + size,
+    html: template
+      .replace("<%= name %>", name)
+      .replace("<%= size %>", size)
+      .replace("<%= url %>", url),
   };
 
   transporter.sendMail(mailData, (error, info) => {
