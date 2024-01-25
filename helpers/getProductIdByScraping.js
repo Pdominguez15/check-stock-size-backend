@@ -21,7 +21,13 @@ const getProductId = async (result) => {
 
 const getProductIdByScraping = async (url) => {
   //First fetch to get cookies, bm-verify and pow
-  const firstResponse = await fetch(url);
+  const firstResponse = await fetch(url, {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0",
+      connection: "keep-alive",
+    },
+  });
   const cookiesFirstResponse = firstResponse.headers.getSetCookie();
 
   const data = await firstResponse.text();
@@ -58,6 +64,9 @@ const getProductIdByScraping = async (url) => {
     headers: {
       Cookie: cookiesFirstResponse.join("; "),
       "Content-Type": "application/json",
+      "User-Agent":
+        "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0",
+      connection: "keep-alive",
     },
     body: JSON.stringify({
       "bm-verify": bmVerify,
@@ -71,6 +80,9 @@ const getProductIdByScraping = async (url) => {
   const response = await fetch(url, {
     headers: {
       cookie: cookiesVerifyResponse.join("; "),
+      "User-Agent":
+        "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0",
+      connection: "keep-alive",
     },
   });
 
