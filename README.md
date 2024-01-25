@@ -1,6 +1,10 @@
 # MailServer
 
-This is a Node.js application that uses Express and Nodemailer to send emails when a tracked product is available in stock. The application's configuration is managed using environment variables using the dotenv package.
+Node.js application that uses Express for route management.
+Nodemailer for email notifications.
+Cheerio for HTML parsing.
+
+The application's configuration is managed using environment variables using the dotenv package.
 
 ## Prerequisites
 
@@ -35,7 +39,10 @@ Follow the steps below to set up and run the application:
 
 ## Usage
 
-The application exposes a /v1/sendMail endpoint that accepts a POST request with the following data:
+The application exposes the following endpoints:
+
+1. /v1/sendMail
+   This endpoint accepts a POST request with the following data:
 
 - email: The email address of the recipient of the email.
 - product: The name of the product that has come back in stock.
@@ -43,6 +50,18 @@ The application exposes a /v1/sendMail endpoint that accepts a POST request with
 The application will use the email credentials defined in the environment variables to send an email to the specified recipient, informing them that the product is available in stock.
 
 You can test the application's functionality by sending a POST request to http://localhost:5000/v1/sendMail with the required data in the request body.
+
+2. /v1/productInfo
+   This endpoint accepts a POST request with the following data:
+
+- url: The url of the product for the following stores: Zara, Bershka, Stradivarius and pull and bear.
+
+The application will response with:
+
+- productUrl: Url for scraping
+- product: Product information with name, color, size.
+
+You can test the application's functionality by sending a POST request to http://localhost:5000/v1/productinfo with the required data in the request body.
 
 ## Contribution
 
@@ -52,10 +71,11 @@ If you'd like to contribute to this project, feel free to do so. You can submit 
 
 This project utilizes the following Node.js dependencies:
 
-- Express: https://expressjs.com/
-- Body-parser: https://www.npmjs.com/package/body-parser
-- Nodemailer: https://nodemailer.com/
-- Dotenv: https://www.npmjs.com/package/dotenv
+- [Express](https://expressjs.com/)
+- [Body-parser](https://www.npmjs.com/package/body-parser)
+- [Nodemailer](https://nodemailer.com/)
+- [Dotenv](https://www.npmjs.com/package/dotenv)
+- [Cheerio](https://cheerio.js.org/)
 
 ## License
 

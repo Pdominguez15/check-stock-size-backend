@@ -36,4 +36,4 @@ const template = `<!DOCTYPE html>
   </body>
 </html>`;
 
-module.exports = template;
+export default template;
