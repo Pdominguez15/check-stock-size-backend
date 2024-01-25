@@ -16,10 +16,17 @@ const mapperPullAndBear = (data, name) => {
 const getPullAndBearProduct = async (url) => {
   const json = await fetchApi(url);
 
-  const name = json.name ? json.name : json.detail.description;
-  const detail = json.detail.colors;
+  if (json.bundleProductSummaries.length > 0) {
+    const name = json.name;
+    const detail = json.bundleProductSummaries[0].detail.colors;
 
-  return mapperPullAndBear(detail, name);
+    return mapperPullAndBear(detail, name);
+  } else {
+    const name = json.name;
+    const detail = json.detail.colors;
+
+    return mapperPullAndBear(detail, name);
+  }
 };
 
 export default getPullAndBearProduct;
