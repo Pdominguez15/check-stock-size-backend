@@ -9,7 +9,7 @@ const productInfo = async (req, res) => {
     productUrl = await getProductUrl(url);
 
     if (productUrl) {
-      const product = await getProductData(productUrl);
+      const product = await getProductData(url);
       res.status(200).send({ productUrl, product });
     } else {
       res.status(400).send({ message: "Error getting productUrl", url });

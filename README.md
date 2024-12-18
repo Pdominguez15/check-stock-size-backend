@@ -27,6 +27,7 @@ Follow the steps below to set up and run the application:
    ```bash
    CHECK_STOCK_EMAIL=your_email@gmail.com
    CHECK_STOCK_PASSWORD=your_password
+   TELEGRAM_TOKEN=your_telegram_token
    ```
 
 4. Start the application by running the following command:

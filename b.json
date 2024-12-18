@@ -1,0 +1,19 @@
+{
+  "productUrl": "https://www.zara.com/es/es/jeans-trf-wide-leg-cinturilla-cruzada-tiro-alto-p00250232.html?v1=425597809&v2=2419517&ajax=true",
+  "product": [
+    {
+      "color": "Índigo",
+      "id": "425597809",
+      "sizes": ["32", "34", "36", "38", "40", "42", "44", "46"],
+      "store": "zara",
+      "name": "Jeans trf wide leg cinturilla cruzada tiro alto"
+    },
+    {
+      "color": "Gris",
+      "id": "425597804",
+      "sizes": ["32", "34", "36", "38", "40", "42", "44", "46"],
+      "store": "zara",
+      "name": "Jeans trf wide leg cinturilla cruzada tiro alto"
+    }
+  ]
+}
